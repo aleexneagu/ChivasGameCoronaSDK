@@ -1,0 +1,67 @@
+local widget = require( "widget" )
+
+local columnData = 
+{ 
+    { 
+        align = "center",
+        width = 70,
+        labelPadding = 10,
+        startIndex = 2,
+        labels = { "Dubai", "Abu Dhabi", "Bahrein" }
+    },
+}
+ 
+local options = {
+    frames =
+    {
+        { x=0, y=0, width=20, height=20 },
+        { x=20, y=0, width=120, height=20 },
+        { x=140, y=0, width=20, height=20 },
+        { x=0, y=20, width=20, height=120 },
+        { x=140, y=20, width=20, height=120 },
+        { x=0, y=140, width=20, height=20 },
+        { x=20, y=140, width=120, height=20 },
+        { x=140, y=140, width=20, height=20 },
+        { x=180, y=0, width=32, height=80 },
+        { x=224, y=0, width=32, height=80 },
+        { x=276, y=0, width=32, height=20 },
+        { x=276, y=60, width=32, height=20 },
+        { x=276, y=100, width=12, height=32 }
+    },
+    sheetContentWidth = 40,
+    sheetContentHeight = 20
+}
+local pickerWheelSheet = graphics.newImageSheet( "fundal",options )
+ 
+local pickerWheel = widget.newPickerWheel(
+{
+    x = display.contentCenterX,
+    top = display.contentHeight - 176,
+    columns = columnData,
+    style = "resizable",
+    width = 70,
+    rowHeight =8,
+    fontSize = 7,
+    sheet = pickerWheelSheet,
+    topLeftFrame = 1,
+    topMiddleFrame = 2,
+    topRightFrame = 3,
+    middleLeftFrame = 4,
+    middleRightFrame = 5,
+    bottomLeftFrame = 6,
+    bottomMiddleFrame = 7,
+    bottomRightFrame = 8,
+    topFadeFrame = 9,
+    bottomFadeFrame = 10,
+    middleSpanTopFrame = 11,
+    middleSpanBottomFrame = 12,
+    separatorFrame = 13,
+    middleSpanOffset = 1,
+    borderPadding = 8
+})
+
+pickerWheel.x=180
+
+local values = pickerWheel:getValues()
+local currentStyle = values[1].value
+ print( currentStyle, currentColor, currentSize )
